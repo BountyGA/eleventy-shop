@@ -19,33 +19,30 @@ export default async function () {
   const json = await res.json();
 
   return (json.data || []).map(item => {
-    const attrs = item.attributes || {};
-
-    // ✅ Image path
-    const rawImg = attrs.image?.data?.attributes?.url || null;
+    // Strapi v5 fields are at the top-level of item
+    const rawImg = item.image?.url || null;
     const image = rawImg
       ? (rawImg.startsWith("http") ? rawImg : `${base}${rawImg}`)
       : null;
 
-    // ✅ Handle description
     let shortDesc = "";
-    if (Array.isArray(attrs.short_description)) {
-      shortDesc = attrs.short_description
-        .map(block => block.children?.map(child => child.text).join("") || "")
+    if (Array.isArray(item.short_description)) {
+      shortDesc = item.short_description
+        .map(block => block.children?.map(c => c.text).join("") || "")
         .join("\n")
         .trim();
-    } else if (typeof attrs.short_description === "string") {
-      shortDesc = attrs.short_description;
+    } else if (typeof item.short_description === "string") {
+      shortDesc = item.short_description;
     }
 
     return {
       id: item.id,
-      name: attrs.name || "Unnamed",
+      name: item.name || "Unnamed",
       short_description: shortDesc,
-      price: parseFloat(attrs.price) || 0,
+      price: parseFloat(item.price) || 0,
       image,
       vendor_phone:
-        (attrs.vendor_phone && attrs.vendor_phone.replace(/\D/g, "")) ||
+        (item.vendor_phone && item.vendor_phone.replace(/\D/g, "")) ||
         process.env.VENDOR_PHONE ||
         "",
     };
