@@ -1,0 +1,442 @@
+
+
+
+
+          
+           
+           
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Rashes&#39; Online Store — Shop</title>
+<style>
+:root {
+  --primary: #ff69b4;
+  --accent: #ffd700;
+  --bg: radial-gradient(1200px 600px at 15% 15%, rgba(255,105,180,0.12), transparent 10%), linear-gradient(180deg, #0a0415 0%, #1a0a27 100%);
+  --panel: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  --muted: #d0c0b0;
+  --glass: rgba(255,255,255,0.2);
+  --card-radius: 18px;
+  --shadow: 0 10px 40px rgba(255,105,180,0.25);
+  --maxwidth: 1200px;
+  --nav-bg: #1a0a27;
+  --btn-send-bg: linear-gradient(90deg, #ff69b4, #ffd700);
+  --footer-bg: #1a0a27;
+  --footer-text: #d0c0b0;
+}
+*{box-sizing:border-box}html,body{height:100%}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial; background: var(--bg);
+  color: #e8eef6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  padding-bottom: 60px;color:#e8eef6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;padding-bottom:60px}.wrap{max-width:var(--maxwidth);margin:36px auto;padding:0 18px}
+/* Floating nav */
+.floating-nav{position:fixed;left:18px;top:50%;transform:translateY(-50%);z-index:1200;display:flex;flex-direction:column;gap:12px;align-items:center}
+.nav-orb{width:64px;height:64px;border-radius:50%;background:conic-gradient(from 120deg at 50% 50%,var(--primary),var(--accent));display:grid;place-items:center;box-shadow:0 8px 30px rgba(122,41,204,0.18),0 2px 10px rgba(0,0,0,0.6);cursor:pointer;border:2px solid rgba(255,255,255,0.06);transition:transform .25s ease}
+.nav-orb:hover{transform:scale(1.06)}
+.nav-links{margin-top:8px;display:flex;flex-direction:column;gap:8px;align-items:center}
+.nav-links a{font-size:12px;color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px;background:transparent;transition:all .18s ease}
+.nav-links a:hover{color:var(--primary);transform:translateX(6px)}
+.topbar{display:none;position:sticky;top:0;z-index:1200; background: var(--nav-bg);border-bottom:1px solid rgba(255,255,255,0.06);padding:10px 18px;display:flex;align-items:center;justify-content:space-between}
+.topbar .brand{display:flex;align-items:center;gap:8px}
+.topbar .brand img{width:32px;height:32px;border-radius:6px}
+.topbar a{color:var(--muted);margin-left:12px;text-decoration:none;font-size:14px}
+.topbar a:hover{color:var(--primary)}
+header.site-head{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:12px 0}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:44px;height:44px;object-fit:cover;border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,0.5)}
+.brand h2{margin:0;font-size:1.05rem;letter-spacing:0.3px;color:var(--primary)}
+.top-actions{display:flex;gap:12px;align-items:center}
+.hero{margin-top:18px;border-radius:14px;padding:28px;background: linear-gradient(180deg, rgba(255,105,180,0.04), rgba(255,215,0,0.02));box-shadow:var(--shadow);display:grid;grid-template-columns:1fr 320px;gap:24px;align-items:center;overflow:hidden}
+.hero-left h1{margin:0;font-size:2.1rem;line-height:1.02;color:#fff;text-shadow:0 8px 30px rgba(122,41,204,0.12)}
+.hero-left p{color:var(--muted);margin-top:10px}
+.hero-cta{margin-top:16px;display:flex;gap:12px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:700;color:#071}
+.btn-primary{background:linear-gradient(90deg,var(--primary),var(--accent));color:#071;box-shadow:0 8px 30px rgba(10,255,200,0.08)}
+.hero-right{display:flex;flex-direction:column;gap:12px;align-items:center}
+.search-wrap{margin:18px 0;display:flex;gap:12px;align-items:center}
+.search-wrap input{flex:1;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--muted);outline:none;transition:box-shadow .15s ease}
+.search-wrap input:focus{box-shadow:0 6px 20px rgba(122,41,204,0.08)}
+/* Grid layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+/* Card styling */
+.card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255,255,255,0.05);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 40px rgba(255,105,180,0.25);
+}
+
+/* Image / Thumbnail */
+.thumb {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--card-radius) var(--card-radius) 0 0;
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .thumb img {
+  transform: scale(1.05);
+}
+
+/* Meta section */
+.meta {
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.desc {
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.2;
+  min-height: 36px; /* ensure uniform card height */
+}
+
+/* Bulk badge */
+.bulk-badge {
+  font-size: 0.65rem;
+  color: #fff;
+  background: var(--accent);
+  padding: 2px 6px;
+  border-radius: 6px;
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.qty {
+  width: 48px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.06);
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.price {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--primary);
+}
+
+/* Order button */
+.order {
+  margin-top: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 0;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: #071;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.order:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 30px rgba(255,105,180,0.25);
+}
+
+.pager{display:flex;gap:8px;justify-content:center;margin-top:18px}
+.pager button{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:8px 12px;border-radius:8px;color:var(--muted);cursor:pointer}
+.pager button.active{background:linear-gradient(90deg,var(--primary),var(--accent));color:#071;border:none}
+.contact{margin-top:32px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent)}
+.contact form{display:flex;flex-direction:column;gap:8px}
+footer {
+  margin-top:30px;
+  text-align:center;
+  font-size:14px;
+  padding:20px;
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  border-top: 1px solid rgba(0,0,0,0.05);  /* optional subtle border */
+}
+
+.socials{display:flex;gap:14px;justify-content:center;margin-top:8px}
+.socials a{text-decoration:none;font-size:20px;color:var(--muted);transition:all .2s}
+.socials a:hover{color:var(--primary)}
+.socials a svg{width:24px;height:24px;fill:var(--muted);transition:fill .2s ease}
+.socials a:hover svg{fill:var(--primary);transform:scale(1.1)}
+@media(max-width:768px){.floating-nav{display:none}.topbar{display:flex}}
+@media (max-width:900px){.hero{grid-template-columns:1fr}.floating-nav{left:8px}.grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}.thumb{height:84px}}
+@media (max-width:560px){.grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}.thumb{height:72px}.brand h2{font-size:0.95rem}}
+.fade-in{opacity:0;transform:translateY(8px) scale(.99);animation:enter .55s cubic-bezier(.2,.9,.2,1) forwards}
+@keyframes enter{to{opacity:1;transform:none}}
+.fade-bounce{opacity:0.7;animation:fadeBounce 2s infinite;text-align:center;font-size:0.8rem;color:var(--muted)}
+@keyframes fadeBounce{0%,100%{opacity:0.7;transform:translateY(0);}50%{opacity:1;transform:translateY(4px);}}
+.contact form button[type="submit"] {
+  background: var(--btn-send-bg);
+  border: none;
+  color: #fff;        /* or editable too if you like */
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .18s, box-shadow .18s;
+}
+.contact form button[type="submit"]:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 24px rgba(122,41,204,0.25);
+}
+
+</style>
+</head>
+<body>
+<!-- Floating nav -->
+<div class="floating-nav" aria-hidden="false">
+  <div class="nav-orb" title="Rashes&#39; Online Store" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'})">
+    <img src="/images/rashes-logo.png" alt="Rashes&#39; Online Store" style="width:44px;height:44px;border-radius:8px;display:block;object-fit:cover">
+  </div>
+  <div class="nav-links" role="navigation" aria-label="Section links">
+    <a href="#hero">Home</a>
+    <a href="#products">Products</a>
+    <a href="#contact">Contact</a>
+  </div>
+</div>
+<!-- Topbar nav (mobile only) -->
+<div class="topbar">
+  <div class="brand"><img src="/images/rashes-logo.png" alt="logo"><strong>Rashes&#39; Online Store</strong></div>
+  <nav>
+    <a href="#hero">Home</a>
+    <a href="#products">Products</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</div>
+
+<div class="wrap">
+<header class="site-head">
+  <div class="brand">
+    <img src="/images/rashes-logo.png" alt="Rashes&#39; Online Store logo">
+    <div><h2>Rashes&#39; Online Store</h2><div style="font-size:12px;color:var(--muted)">Modern gadgets & small tech</div></div>
+  </div>
+  <div class="top-actions">
+    <button class="btn btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Shop Products</button>
+  </div>
+</header>
+
+<!-- hero -->
+<section id="hero" class="hero fade-in" aria-label="Hero">
+  <div class="hero-left">
+    <h1>Cute goodies &amp; tech treats, just for you!</h1>
+    <p>Explore playful gadgets and adorable accessories. One click ordering via WhatsApp — fast, fun, and simple!</p>
+
+    <div class="hero-cta">
+      <button class="btn btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Browse Products</button>
+      <button class="btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" style="border:1px solid rgba(255,255,255,0.04);color:var(--muted)">Contact Us</button>
+    </div>
+    <div class="search-wrap">
+      <input id="search" type="search" placeholder="Search product name..." aria-label="Search products">
+      <div style="width:120px;text-align:right;color:var(--muted)" aria-live="polite">
+        Showing <span id="visible-count">0</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div style="width:100%;background:var(--glass);padding:10px;border-radius:10px;text-align:center">
+      <strong style="font-size:1.05rem;color:var(--primary)">Rashes&#39; Online Store</strong>
+      <div style="font-size:12px;color:var(--muted)">Quality gear • Fast ordering</div>
+    </div>
+    <div style="width:100%;margin-top:12px;text-align:center">
+      <img src="/images/hero-cute.jpeg" alt="Hero visual" style="width:220px;height:220px;border-radius:16px;object-fit:cover">
+    </div>
+    <div class="fade-bounce">↓ Browse Products</div>
+  </div>
+</section>
+
+<section id="products" aria-label="Products" style="margin-top:20px">
+  <h3 style="margin:6px 0 12px">Products</h3>
+  <div id="grid" class="grid" role="list">
+    
+  </div>
+  <div class="pager" id="pager" aria-label="Pagination"></div>
+</section>
+
+
+<!-- contact -->
+<section id="contact" class="contact" aria-label="Contact">
+  <h4>Contact Us</h4>
+  <p style="color:var(--muted)">Questions or bulk orders? Drop a message and we’ll reach out.</p>
+  <form id="contactForm" action="https://formspree.io/f/hello%40rashesstore.com" method="POST">
+    <input type="text" name="name" placeholder="Your name" required style="padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--muted)">
+    <input type="email" name="email" placeholder="Your email" required style="padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--muted)">
+    <textarea name="message" rows="4" placeholder="Message" required style="padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--muted)"></textarea>
+    <div style="margin-top:8px">
+      <button type="submit" class="order">Send Message</button>
+    </div>
+  </form>
+</section>
+
+<footer>
+  <div>© <span id="year"></span> Rashes&#39; Online Store</div>
+  <div class="socials">
+    
+      <a href="https://twitter.com/" target="_blank" aria-label="Twitter"><svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentColor' viewBox='0 0 24 24'><path d='M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z'/></svg></a>
+    
+      <a href="https://facebook.com/" target="_blank" aria-label="Facebook"><svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentColor' viewBox='0 0 24 24'><path d='M22 12a10 10 0 1 0-11.5 9.9v-7H8v-3h2.5v-2.3c0-2.5 1.5-3.9 3.7-3.9 1.1 0 2.3.2 2.3.2v2.5H15c-1.2 0-1.6.8-1.6 1.6v1.9h2.8l-.4 3H13v7A10 10 0 0 0 22 12z'/></svg></a>
+    
+      <a href="https://instagram.com/" target="_blank" aria-label="Instagram"><svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='currentColor' viewBox='0 0 24 24'><path d='M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.5-.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z'/></svg></a>
+    
+  </div>
+</footer>
+
+<script>
+const cards = Array.from(document.querySelectorAll('.card'));
+const grid = document.getElementById('grid');
+const search = document.getElementById('search');
+const visibleCountEl = document.getElementById('visible-count');
+const pager = document.getElementById('pager');
+const PAGE_SIZE = 6;
+let currentPage = 1;
+let filtered = [...cards];
+
+// WhatsApp order handler
+function handleOrder(card){
+  const qty = card.querySelector('.qty').value || 1;
+  const name = card.dataset.name;
+  const price = card.dataset.price;
+  const phone = card.dataset.phone || '2348036500000';
+  const total = Number(qty) * Number(price);
+  const msg = encodeURIComponent(`Hi, I'd like to order:\n${name} x${qty}\nTotal: ₦${total}`);
+  window.open(`https://wa.me/${phone}?text=${msg}`,'_blank');
+}
+
+// update price live on quantity change
+function updatePrice(card){
+  const qty = card.querySelector('.qty').value || 1;
+  const price = Number(card.dataset.price);
+  card.querySelector('.price').textContent = `₦${price * qty}`;
+}
+
+// attach event listeners for order + quantity change
+cards.forEach(c=>{
+  const qtySelect = c.querySelector('.qty');
+  const orderBtn = c.querySelector('.order');
+
+  qtySelect.addEventListener('change', ()=>updatePrice(c));
+  updatePrice(c); // initial render
+
+  orderBtn.addEventListener('click', ()=>handleOrder(c));
+});
+
+// render pagination & page
+function renderPage(page=1){
+  const start = (page-1)*PAGE_SIZE;
+  const end = start+PAGE_SIZE;
+
+  // hide all first
+  cards.forEach(c=>c.style.display='none');
+
+  if(filtered.length===0){
+    grid.innerHTML='<div style="grid-column:1/-1;text-align:center;color:var(--muted)">No products found</div>';
+    visibleCountEl.textContent = 0;
+    pager.innerHTML='';
+    return;
+  }else{
+    // restore filtered elements in grid
+    filtered.forEach(c=>grid.appendChild(c));
+  }
+
+  filtered.forEach((c,i)=>{
+    if(i>=start && i<end) c.style.display=''; 
+  });
+
+  const pageCount = Math.ceil(filtered.length / PAGE_SIZE);
+  pager.innerHTML='';
+  for(let i=1;i<=pageCount;i++){
+    const btn = document.createElement('button');
+    btn.textContent=i;
+    btn.className=i===page?'active':'';
+    btn.onclick=()=>{currentPage=i;renderPage(i);window.scrollTo({top:grid.offsetTop-80,behavior:'smooth'})};
+    pager.appendChild(btn);
+  }
+
+  visibleCountEl.textContent=filtered.length;
+}
+
+// search filter
+search.addEventListener('input',()=>{
+  const q=(search.value||'').trim().toLowerCase();
+  filtered = cards.filter(c=>c.dataset.name.toLowerCase().includes(q));
+  currentPage=1;
+  renderPage(1);
+});
+
+// set current year
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// initial render
+renderPage(1);
+</script>
+
+</body>
+</html>
