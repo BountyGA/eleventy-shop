@@ -1,4 +1,5 @@
 import 'dotenv/config'; // loads .env automatically
+import fetch from "node-fetch";
 
 export default async function () {
   const base = process.env.STRAPI_API_URL;
@@ -18,29 +19,33 @@ export default async function () {
   const json = await res.json();
 
   return (json.data || []).map(item => {
-    // Strapi v5 puts fields directly on the item
-    const rawImg = item.image?.url || null;
-    const image = rawImg ? (rawImg.startsWith("http") ? rawImg : `${base}${rawImg}`) : null;
+    const attrs = item.attributes || {};
 
-    // Handle rich text array (flatten to string)
+    // ✅ Image path
+    const rawImg = attrs.image?.data?.attributes?.url || null;
+    const image = rawImg
+      ? (rawImg.startsWith("http") ? rawImg : `${base}${rawImg}`)
+      : null;
+
+    // ✅ Handle description
     let shortDesc = "";
-    if (Array.isArray(item.short_description)) {
-      shortDesc = item.short_description
+    if (Array.isArray(attrs.short_description)) {
+      shortDesc = attrs.short_description
         .map(block => block.children?.map(child => child.text).join("") || "")
         .join("\n")
         .trim();
-    } else if (typeof item.short_description === "string") {
-      shortDesc = item.short_description;
+    } else if (typeof attrs.short_description === "string") {
+      shortDesc = attrs.short_description;
     }
 
     return {
       id: item.id,
-      name: item.name || "Unnamed",
+      name: attrs.name || "Unnamed",
       short_description: shortDesc,
-      price: parseFloat(item.price) || 0,
+      price: parseFloat(attrs.price) || 0,
       image,
       vendor_phone:
-        (item.vendor_phone && item.vendor_phone.replace(/\D/g, "")) ||
+        (attrs.vendor_phone && attrs.vendor_phone.replace(/\D/g, "")) ||
         process.env.VENDOR_PHONE ||
         "",
     };
