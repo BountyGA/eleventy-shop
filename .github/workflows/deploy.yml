@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
   repository_dispatch:
-    types: [entry.publish]   # 🚀 will run when Strapi webhook sends publish
+  types: [strapi_update]
 
 permissions:
   contents: write
