@@ -4,7 +4,8 @@ on:
   push:
     branches: [ "main" ]
   repository_dispatch:
-  types: [strapi_update]
+    types:
+      - strapi_update   # 👈 correct format
 
 permissions:
   contents: write
