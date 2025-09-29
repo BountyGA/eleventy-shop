@@ -3,9 +3,8 @@ name: Build and deploy Eleventy to gh-pages
 on:
   push:
     branches: [ "main" ]
-  repository_dispatch:
-    types:
-      - strapi_update   # 👈 correct format
+  repository_dispatch:  
+  workflow_dispatch:    
 
 permissions:
   contents: write
