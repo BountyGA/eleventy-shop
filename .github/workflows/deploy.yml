@@ -3,6 +3,8 @@ name: Build and deploy Eleventy to gh-pages
 on:
   push:
     branches: [ "main" ]
+  repository_dispatch:
+    types: [entry.publish]   # 🚀 will run when Strapi webhook sends publish
 
 permissions:
   contents: write
