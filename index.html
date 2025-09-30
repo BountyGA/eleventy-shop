@@ -346,7 +346,7 @@ footer {
 <section id="contact" class="contact" aria-label="Contact">
   <h4>Contact Us</h4>
   <p style="color:var(--muted)">Questions or bulk orders? Drop a message and we’ll reach out.</p>
-  <form id="contactForm" action="https://formspree.io/f/hello%40rashesstore.com" method="POST">
+  <form id="contactForm" action="https://formspree.io/f/xldpblge }}" method="POST">
     <input type="text" name="name" placeholder="Your name" required style="padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--muted)">
     <input type="email" name="email" placeholder="Your email" required style="padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--muted)">
     <textarea name="message" rows="4" placeholder="Message" required style="padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--muted)"></textarea>
@@ -456,6 +456,25 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
 // initial render
 renderPage(1);
+
+
+
+  const form = document.getElementById("contactForm");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const res = await fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: { "Accept": "application/json" }
+    });
+    if (res.ok) {
+      alert("✅ Message sent! We’ll get back to you soon.");
+      form.reset();
+    } else {
+      alert("❌ Something went wrong. Please try again.");
+    }
+  });
+
 </script>
 
 </body>
