@@ -3,8 +3,8 @@
 
 
          
-          
-          
+           
+           
 
 
             
@@ -104,19 +104,7 @@ header.site-head{display:flex;align-items:center;justify-content:space-between;g
   margin-top: 10px;
   font-size: 1rem;
 }
-.hero-right img {
-  max-width: 220px; 
-  width: 100%;
-  height: auto; /* keep aspect ratio */
-}
 
-.hero-cta{margin-top:16px;display:flex;gap:12px;align-items:center}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:700;color:#071}
-.btn-primary{background:linear-gradient(90deg,var(--primary),var(--accent));color:#071;box-shadow:0 8px 30px rgba(10,255,200,0.08)}
-.hero-right{display:flex;flex-direction:column;gap:12px;align-items:center}
-.search-wrap{margin:18px 0;display:flex;gap:12px;align-items:center}
-.search-wrap input{flex:1;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--muted);outline:none;transition:box-shadow .15s ease}
-.search-wrap input:focus{box-shadow:0 6px 20px rgba(122,41,204,0.08)}
 /* 📱 Mobile adjustments */
 @media (max-width: 768px) {
   .hero {
@@ -153,6 +141,16 @@ header.site-head{display:flex;align-items:center;justify-content:space-between;g
   }
 }
 
+.hero{margin-top:18px;border-radius:14px;padding:28px;background: linear-gradient(180deg, rgba(255,105,180,0.04), rgba(255,215,0,0.02));box-shadow:var(--shadow);display:grid;grid-template-columns:1fr 320px;gap:24px;align-items:center;overflow:hidden}
+.hero-left h1{margin:0;font-size:2.1rem;line-height:1.02;color:#fff;text-shadow:0 8px 30px rgba(122,41,204,0.12)}
+.hero-left p{color:var(--muted);margin-top:10px}
+.hero-cta{margin-top:16px;display:flex;gap:12px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:700;color:#071}
+.btn-primary{background:linear-gradient(90deg,var(--primary),var(--accent));color:#071;box-shadow:0 8px 30px rgba(10,255,200,0.08)}
+.hero-right{display:flex;flex-direction:column;gap:12px;align-items:center}
+.search-wrap{margin:18px 0;display:flex;gap:12px;align-items:center}
+.search-wrap input{flex:1;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--muted);outline:none;transition:box-shadow .15s ease}
+.search-wrap input:focus{box-shadow:0 6px 20px rgba(122,41,204,0.08)}
 /* Grid layout */
 .grid {
   display: grid;
@@ -178,11 +176,12 @@ header.site-head{display:flex;align-items:center;justify-content:space-between;g
 
 /* Image / Thumbnail */
 .thumb {
-  position: relative;
   width: 100%;
-  height: 200px; /* slightly taller so image dominates */
+  height: 160px;
   overflow: hidden;
   flex-shrink: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--card-radius) var(--card-radius) 0 0;
 }
 
 .thumb img {
@@ -197,38 +196,37 @@ header.site-head{display:flex;align-items:center;justify-content:space-between;g
   transform: scale(1.05);
 }
 
-/* Overlay for text */
-.overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 10px;
-  background: linear-gradient(transparent, rgba(0,0,0,0.7));
-  color: #fff;
-}
-
-.overlay .title {
-  font-size: 0.95rem;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
-
-.overlay .desc {
-  font-size: 0.75rem;
-  line-height: 1.2;
-  color: #ddd;
-  max-height: 2.8em; /* 2 lines */
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Meta section (only controls below image) */
+/* Meta section */
 .meta {
   padding: 12px 10px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
+}
+
+.title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.desc {
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.2;
+  min-height: 36px; /* ensure uniform card height */
+}
+
+/* Bulk badge */
+.bulk-badge {
+  font-size: 0.65rem;
+  color: #fff;
+  background: var(--accent);
+  padding: 2px 6px;
+  border-radius: 6px;
+  align-self: flex-start;
+  margin-top: 4px;
 }
 
 /* Controls */
@@ -236,6 +234,7 @@ header.site-head{display:flex;align-items:center;justify-content:space-between;g
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 8px;
 }
 
 .qty {
@@ -256,7 +255,7 @@ header.site-head{display:flex;align-items:center;justify-content:space-between;g
 
 /* Order button */
 .order {
-  margin-top: 6px;
+  margin-top: 8px;
   padding: 8px 12px;
   border-radius: 8px;
   border: 0;
@@ -273,24 +272,8 @@ header.site-head{display:flex;align-items:center;justify-content:space-between;g
   box-shadow: 0 8px 30px rgba(255,105,180,0.25);
 }
 
-
-
 .pager{display:flex;gap:8px;justify-content:center;margin-top:18px}
-.pager button{background:transparent;border:1px solid r/* Bulk badge positioned on image */
-.bulk-badge {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 0.65rem;
-  color: #fff;
-  background: var(--accent);
-  padding: 3px 7px;
-  border-radius: 6px;
-  font-weight: 600;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
-  z-index: 2;
-}
-gba(255,255,255,0.04);padding:8px 12px;border-radius:8px;color:var(--muted);cursor:pointer}
+.pager button{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:8px 12px;border-radius:8px;color:var(--muted);cursor:pointer}
 .pager button.active{background:linear-gradient(90deg,var(--primary),var(--accent));color:#071;border:none}
 .contact{margin-top:32px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent)}
 .contact form{display:flex;flex-direction:column;gap:8px}
@@ -369,8 +352,8 @@ footer {
 <!-- hero -->
 <section id="hero" class="hero fade-in" aria-label="Hero">
   <div class="hero-left">
-    <h1>Bespoke and Classy, build trust in an elegant way with customers!</h1>
-    <p>Explore up to 250 products with bulk customers email listing &amp; a flawless interface!</p>
+    <h1>Check out straight to whatsapp!</h1>
+    <p>Explore up to 250 products with bulk purchase customers email listings and flawless interface!</p>
 
     <div class="hero-cta">
       <button class="btn btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Browse Products</button>
@@ -399,105 +382,45 @@ footer {
   <h3 style="margin:6px 0 12px">Products</h3>
   <div id="grid" class="grid" role="list">
     
-    <article class="card fade-in" role="listitem" 
-  data-name="water bottle" 
-  data-price="4700" 
-  data-phone="2348036507330" 
-  title="Water bottle">
-  
-  <div class="thumb">
+    <article class="card fade-in" role="listitem" data-name="water bottle" data-price="4700" data-phone="2348036507330" title="Water bottle">
+      <div class="thumb">
+        
+          <img src="https://trusty-balance-e63a7b9d48.media.strapiapp.com/hero_cute_435aa1a2bd.jpeg" alt="Water bottle">
+        
+      </div>
+      <div class="meta">
+        <div class="title">Water bottle</div>
+        <div class="desc">cdggaAWRE</div>
+        
+        <div class="bulk-badge">Bulk order > 8</div>
+        
+        <div class="controls">
+          <select class="qty" aria-label="Select quantity"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select>
+          <div class="price">₦4700</div>
+        </div>
+        <button class="order" type="button" aria-label="Order Water bottle">Order</button>
+      </div>
+    </article>
     
-      <img src="https://trusty-balance-e63a7b9d48.media.strapiapp.com/hero_cute_435aa1a2bd.jpeg" alt="Water bottle">
-    
-    
-    
-      <div class="bulk-badge">Bulk &gt; 8</div>
-    
-    
-    <div class="overlay">
-      <div class="title">Water bottle</div>
-      <div class="desc">cdggaAWRE</div>
-    </div>
-  </div>
-  
-  <div class="meta">
-    <div class="controls">
-      <select class="qty" aria-label="Select quantity">
+    <article class="card fade-in" role="listitem" data-name="test2 product" data-price="5630" data-phone="2348036507330" title="Test2 product">
+      <div class="thumb">
         
-          <option value="1">1</option>
+          <img src="https://trusty-balance-e63a7b9d48.media.strapiapp.com/logo_black_54558d87af.png" alt="Test2 product">
         
-          <option value="2">2</option>
+      </div>
+      <div class="meta">
+        <div class="title">Test2 product</div>
+        <div class="desc">test short description</div>
         
-          <option value="3">3</option>
+        <div class="bulk-badge">Bulk order > 8</div>
         
-          <option value="4">4</option>
-        
-          <option value="5">5</option>
-        
-          <option value="6">6</option>
-        
-          <option value="7">7</option>
-        
-          <option value="8">8</option>
-        
-      </select>
-      <div class="price">₦4700</div>
-    </div>
-    <button class="order" type="button" aria-label="Order Water bottle">Order</button>
-  </div>
-</article>
-
-
-    
-    <article class="card fade-in" role="listitem" 
-  data-name="test2 product" 
-  data-price="5630" 
-  data-phone="2348036507330" 
-  title="Test2 product">
-  
-  <div class="thumb">
-    
-      <img src="https://trusty-balance-e63a7b9d48.media.strapiapp.com/logo_black_54558d87af.png" alt="Test2 product">
-    
-    
-    
-      <div class="bulk-badge">Bulk &gt; 8</div>
-    
-    
-    <div class="overlay">
-      <div class="title">Test2 product</div>
-      <div class="desc">test short description</div>
-    </div>
-  </div>
-  
-  <div class="meta">
-    <div class="controls">
-      <select class="qty" aria-label="Select quantity">
-        
-          <option value="1">1</option>
-        
-          <option value="2">2</option>
-        
-          <option value="3">3</option>
-        
-          <option value="4">4</option>
-        
-          <option value="5">5</option>
-        
-          <option value="6">6</option>
-        
-          <option value="7">7</option>
-        
-          <option value="8">8</option>
-        
-      </select>
-      <div class="price">₦5630</div>
-    </div>
-    <button class="order" type="button" aria-label="Order Test2 product">Order</button>
-  </div>
-</article>
-
-
+        <div class="controls">
+          <select class="qty" aria-label="Select quantity"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select>
+          <div class="price">₦5630</div>
+        </div>
+        <button class="order" type="button" aria-label="Order Test2 product">Order</button>
+      </div>
+    </article>
     
   </div>
   <div class="pager" id="pager" aria-label="Pagination"></div>
@@ -511,36 +434,12 @@ footer {
   <form id="contactForm" action="https://formspree.io/f/xldpblge" method="POST">
     <input type="text" name="name" placeholder="Your name" required style="padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--muted)">
     <input type="email" name="email" placeholder="Your email" required style="padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--muted)">
-    <textarea name="message" rows="4" placeholder="Message (Ensure your above email is correct)" required style="padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--muted)"></textarea>
+    <textarea name="message" rows="4" placeholder="Message" required style="padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--muted)"></textarea>
     <div style="margin-top:8px">
       <button type="submit" class="order">Send Message</button>
     </div>
   </form>
-
-  <p id="formStatus" style="margin-top:10px;color:var(--muted)"></p>
 </section>
-
-<script>
-  const form = document.getElementById("contactForm");
-  const status = document.getElementById("formStatus");
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const data = new FormData(form);
-    const response = await fetch(form.action, {
-      method: form.method,
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    });
-    if (response.ok) {
-      status.textContent = "✅ Thanks! Your message has been sent.";
-      form.reset();
-    } else {
-      status.textContent = "❌ Oops! Something went wrong. Try again later.";
-    }
-  });
-</script>
-
 
 <footer>
   <div>© <span id="year"></span> SME Online Store</div>
@@ -570,7 +469,7 @@ function handleOrder(card){
   const qty = card.querySelector('.qty').value || 1;
   const name = card.dataset.name;
   const price = card.dataset.price;
-  const phone = card.dataset.phone || '2348036500000';
+  const phone = card.dataset.phone || '2348036507330';
   const total = Number(qty) * Number(price);
   const msg = encodeURIComponent(`Hi, I'd like to order:\n${name} x${qty}\nTotal: ₦${total}`);
   window.open(`https://wa.me/${phone}?text=${msg}`,'_blank');
@@ -642,8 +541,6 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
 // initial render
 renderPage(1);
-
-
 
   const form = document.getElementById("contactForm");
   form.addEventListener("submit", async (e) => {
